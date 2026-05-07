@@ -1,0 +1,118 @@
+:root {
+    --pastel-pink: #fce4ec;
+    --medium-pink: #f06292;
+    --red-velvet: #a80019; /* Rojo vinito */
+    --dark-velvet: #7a0012;
+    --white-glass: rgba(255, 255, 255, 0.6);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, var(--pastel-pink), #f8bbd0);
+    color: var(--red-velvet);
+    overflow-x: hidden;
+}
+
+/* Estrellas de fondo */
+.stars-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.glass-card {
+    background: var(--white-glass);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: var(--red-velvet);
+}
+
+.heart-icon {
+    font-size: 40px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.content {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.message-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--red-velvet);
+}
+
+.photo-placeholder {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    background: var(--medium-pink);
+    margin: 0 auto 30px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 4px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+button {
+    background-color: var(--red-velvet);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: var(--dark-velvet);
+    transform: translateY(-3px);
+}
+
+.hidden {
+    display: none;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Responsivo para celulares */
+@media (max-width: 600px) {
+    .title { font-size: 2.2rem; }
+    .glass-card { padding: 30px 15px; }
+}
