@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para el admv 💞</title>
-    <!-- Favicon de corazón -->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/833/833472.png" type="image/png">
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Luces de Disco (Corazones) -->
     <div class="disco-background">
         <div class="disco-heart">💞</div>
         <div class="disco-heart">💞</div>
@@ -20,7 +18,6 @@
         <div class="disco-heart">💞</div>
     </div>
 
-    <!-- Pantalla de Bloqueo -->
     <div id="login-screen" class="login-overlay">
         <div class="glass-card">
             <h2>Nuestra Fecha Especial</h2>
@@ -31,13 +28,15 @@
         </div>
     </div>
 
-    <!-- Contenido Principal -->
     <div id="main-content" style="display: none;">
         <section class="hero">
             <div class="glass-card">
                 <h1 class="title">Un mes a tu lado, ppi</h1>
                 <p class="subtitle">05.04.2026 • 05.05.2026</p>
-                <div class="heart-icon">❤️</div>
+                <div class="heart-container">
+                    <div class="heart-icon" id="mainHeart">❤️</div>
+                    <p id="hiddenMessage" class="floating-text">¡Eres lo mejor que me ha pasado! 💞</p>
+                </div>
             </div>
         </section>
 
@@ -50,9 +49,6 @@
             <div class="photo-placeholder">
                 <span>💞 Nuestra Fotoo 💞</span>
             </div>
-
-            <button id="loveButton">¡Presiona aquí!</button>
-            <p id="hiddenMessage" class="hidden">¡Eres lo mejor que me ha pasado! 💞</p>
         </section>
     </div>
 
