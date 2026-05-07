@@ -7,34 +7,40 @@ function checkPassword() {
     if (input === "0504") {
         loginScreen.style.display = 'none';
         mainContent.style.display = 'block';
-        window.scrollTo(0, 0);
     } else {
         errorMsg.style.display = 'block';
         document.getElementById('passwordInput').value = "";
     }
 }
 
-const loveButton = document.getElementById('loveButton');
+// Lógica del Corazón
+const mainHeart = document.getElementById('mainHeart');
 const hiddenMessage = document.getElementById('hiddenMessage');
 
-if(loveButton) {
-    loveButton.addEventListener('click', () => {
+if(mainHeart) {
+    mainHeart.addEventListener('click', () => {
+        // Muestra el texto sobre el corazón
         hiddenMessage.style.display = 'block';
-        loveButton.innerText = "❤️";
-        // Efecto extra de lluvia de corazones
-        for(let i=0; i<20; i++) {
-            setTimeout(createHeart, i * 100);
+        
+        // Lluvia de corazones
+        for(let i=0; i<15; i++) {
+            createHeart();
         }
+
+        // Se oculta después de 3 segundos
+        setTimeout(() => {
+            hiddenMessage.style.display = 'none';
+        }, 3000);
     });
 }
 
 function createHeart() {
     const heart = document.createElement('div');
-    heart.innerHTML = '💗';
+    heart.innerHTML = '💞';
     heart.style.position = 'fixed';
     heart.style.left = Math.random() * 100 + 'vw';
     heart.style.top = '-20px';
-    heart.style.fontSize = '30px';
+    heart.style.fontSize = '25px';
     heart.style.zIndex = '1000';
     heart.style.pointerEvents = 'none';
     
