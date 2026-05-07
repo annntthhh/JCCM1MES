@@ -14,7 +14,7 @@ body {
     overflow-x: hidden;
 }
 
-/* DISCO EFECTO */
+/* DISCO EFECTO (Mantenido) */
 .disco-background {
     position: fixed;
     width: 100vw;
@@ -41,7 +41,7 @@ body {
 .disco-heart:nth-child(4) { top: 80%; left: 80%; }
 .disco-heart:nth-child(5) { top: 40%; left: 45%; }
 
-/* LOGIN */
+/* LOGIN (Mantenido) */
 .login-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -59,9 +59,11 @@ body {
 .glass-card button {
     display: block;
     margin: 0 auto;
+    background: var(--red-velvet); color: white; border: none;
+    padding: 12px 25px; border-radius: 20px; cursor: pointer;
 }
 
-/* CORAZÓN LATIENTE */
+/* CORAZÓN LATIENTE (Mantenido) */
 .heart-container {
     position: relative;
     display: inline-block;
@@ -82,7 +84,7 @@ body {
     60% { transform: scale(1); }
 }
 
-/* TEXTO FLOTANTE SOBRE EL CORAZÓN */
+/* TEXTO FLOTANTE SOBRE EL CORAZÓN (Mantenido) */
 .floating-text {
     display: none;
     position: absolute;
@@ -112,15 +114,27 @@ body {
 .message-box {
     background: white; padding: 25px; border-radius: 15px;
     margin: 20px; border-left: 5px solid var(--red-velvet);
+    position: relative; z-index: 1;
 }
 
+/* AJUSTE DEL CONTENEDOR DE LA FOTO (ACTUALIZADO) */
 .photo-placeholder {
-    width: 280px; height: 280px; background: var(--medium-pink);
-    margin: 0 auto; border-radius: 15px; border: 4px solid white;
-    display: flex; align-items: center; justify-content: center; color: white;
+    width: 280px; 
+    height: 280px; 
+    /* Quitamos el fondo rosado para que se vea la foto */
+    margin: 0 auto 30px; 
+    border-radius: 15px; 
+    border: 4px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden; /* Importante para que la foto no se salga de los bordes redondeados */
+    position: relative;
+    z-index: 1;
 }
 
-button {
-    background: var(--red-velvet); color: white; border: none;
-    padding: 12px 25px; border-radius: 20px; cursor: pointer;
+/* ESTILOS PARA LA FOTO REAL (NUEVO) */
+.our-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto hace que la foto llene el cuadrado sin deformarse, recortando un poco si es necesario */
+    display: block;
 }
