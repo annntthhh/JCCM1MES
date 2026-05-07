@@ -2,6 +2,7 @@
     --pastel-pink: #fce4ec;
     --medium-pink: #f06292;
     --red-velvet: #a80019;
+    --dark-velvet: #7a0012;
     --white-glass: rgba(255, 255, 255, 0.6);
 }
 
@@ -14,6 +15,7 @@ body {
     overflow-x: hidden;
 }
 
+/* EFECTO DISCO (Mantenido) */
 .disco-background {
     position: fixed;
     width: 100vw;
@@ -40,6 +42,7 @@ body {
 .disco-heart:nth-child(4) { top: 80%; left: 80%; }
 .disco-heart:nth-child(5) { top: 40%; left: 45%; }
 
+/* LOGIN (Mantenido) */
 .login-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -61,16 +64,44 @@ body {
     padding: 12px 25px; border-radius: 20px; cursor: pointer;
 }
 
+/* --- AJUSTE: CABECERA REDUCIDA (NO TAN GRANDE) --- */
+.hero-reducido {
+    padding: 50px 20px 20px; /* Espaciado más pequeño */
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.glass-card {
+    background: var(--white-glass);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px 20px; /* Reducido espaciado interno */
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    max-width: 90%;
+    text-align: center;
+}
+
+.title { font-family: 'Dancing Script'; font-size: 2.5rem; margin-top: 0; } /* Título más pequeño */
+.subtitle { margin-bottom: 5px; }
+
+/* --- AJUSTE: CORAZÓN Y TEXTO AL TOCAR --- */
 .heart-container {
     position: relative;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .heart-icon {
-    font-size: 50px;
+    font-size: 55px; /* Corazón un poco más grande */
     cursor: pointer;
-    animation: heartBeat 1.2s infinite;
+    animation: heartBeat 1s infinite; /* Animación de latido más rápido */
+    transition: transform 0.3s ease; /* Efecto al tocar */
+}
+
+.heart-icon:active {
+    transform: scale(0.8); /* Se achica un poco al tocar */
 }
 
 @keyframes heartBeat {
@@ -81,50 +112,81 @@ body {
     60% { transform: scale(1); }
 }
 
+/* TEXTO FLOTANTE SOBRE EL CORAZÓN AL TOCAR (Mantenido) */
 .floating-text {
-    display: none;
+    display: none; /* Se oculta por defecto, script.js lo muestra */
     position: absolute;
-    top: -60px;
+    top: -70px;
     left: 50%;
     transform: translateX(-50%);
     background: var(--red-velvet);
     color: white;
-    padding: 8px 15px;
-    border-radius: 10px;
-    font-size: 0.9rem;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 1rem;
     white-space: nowrap;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-weight: bold;
+    z-index: 100;
 }
 
-.glass-card {
-    background: var(--white-glass);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px 20px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+/* --- DISEÑO CONTENIDO ORGANIZADO --- */
+.content-organizado {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
 }
-
-.title { font-family: 'Dancing Script'; font-size: 2.8rem; }
 
 .message-box {
     background: white; padding: 25px; border-radius: 15px;
-    margin: 20px; border-left: 5px solid var(--red-velvet);
+    margin: 10px; border-left: 5px solid var(--red-velvet);
+    line-height: 1.6;
+    max-width: 600px; /* Mensaje más contenido */
+    margin-bottom: 30px;
 }
 
-.photo-placeholder {
-    width: 280px; 
-    height: 280px; 
-    margin: 0 auto 30px; 
-    border-radius: 15px; 
-    border: 4px solid white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    overflow: hidden;
+/* --- AJUSTE: SECCIÓN DE LA FOTO (LINDA Y ORGANIZADA) --- */
+.photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.photo-wrapper {
+    width: 300px; /* Tamaño fijo para la foto */
+    height: 300px;
+    margin: 0 auto;
+    border-radius: 50%; /* Foto en círculo */
+    border: 6px solid white; /* Marco blanco */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* Sombra suave */
+    overflow: hidden; /* Corta la foto al círculo */
     position: relative;
+    transition: transform 0.3s ease;
+}
+
+.photo-wrapper:hover {
+    transform: rotate(3deg) scale(1.05); /* Efecto lindo al pasar el mouse */
 }
 
 .our-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Encaja la foto perfectamente */
     display: block;
+}
+
+.photo-caption {
+    margin-top: 15px;
+    color: var(--red-velvet);
+    font-family: 'Dancing Script';
+    font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .photo-wrapper { width: 250px; height: 250px; } /* Más pequeña en móvil */
 }
