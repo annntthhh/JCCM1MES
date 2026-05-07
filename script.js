@@ -1,4 +1,3 @@
-// Función para verificar la clave
 function checkPassword() {
     const input = document.getElementById('passwordInput').value;
     const errorMsg = document.getElementById('error-msg');
@@ -8,17 +7,13 @@ function checkPassword() {
     if (input === "0504") {
         loginScreen.style.display = 'none';
         mainContent.style.display = 'block';
-        // Iniciar efecto de corazones al entrar
-        for(let i=0; i<10; i++) {
-            setTimeout(createHeart, i * 300);
-        }
+        window.scrollTo(0, 0);
     } else {
         errorMsg.style.display = 'block';
         document.getElementById('passwordInput').value = "";
     }
 }
 
-// Lógica del botón de "Te amo"
 const loveButton = document.getElementById('loveButton');
 const hiddenMessage = document.getElementById('hiddenMessage');
 
@@ -26,21 +21,22 @@ if(loveButton) {
     loveButton.addEventListener('click', () => {
         hiddenMessage.style.display = 'block';
         loveButton.innerText = "❤️";
-        for(let i=0; i<15; i++) {
-            createHeart();
+        // Efecto extra de lluvia de corazones
+        for(let i=0; i<20; i++) {
+            setTimeout(createHeart, i * 100);
         }
     });
 }
 
 function createHeart() {
     const heart = document.createElement('div');
-    heart.innerHTML = '❤️';
+    heart.innerHTML = '💗';
     heart.style.position = 'fixed';
     heart.style.left = Math.random() * 100 + 'vw';
     heart.style.top = '-20px';
-    heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+    heart.style.fontSize = '30px';
     heart.style.zIndex = '1000';
-    heart.style.transition = 'transform 3s linear, opacity 3s linear';
+    heart.style.pointerEvents = 'none';
     
     document.body.appendChild(heart);
 
@@ -50,8 +46,7 @@ function createHeart() {
             clearInterval(interval);
             heart.remove();
         }
-        pos += 2.5;
+        pos += 3;
         heart.style.top = pos + 'px';
-        heart.style.opacity = 1 - (pos / window.innerHeight);
     }, 16);
 }
