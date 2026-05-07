@@ -1,3 +1,4 @@
+// Función para verificar la clave (0504)
 function checkPassword() {
     const input = document.getElementById('passwordInput').value;
     const errorMsg = document.getElementById('error-msg');
@@ -7,33 +8,35 @@ function checkPassword() {
     if (input === "0504") {
         loginScreen.style.display = 'none';
         mainContent.style.display = 'block';
+        window.scrollTo(0, 0); // Sube al inicio de la página al entrar
     } else {
         errorMsg.style.display = 'block';
-        document.getElementById('passwordInput').value = "";
+        document.getElementById('passwordInput').value = ""; // Limpia el input
     }
 }
 
-// Lógica del Corazón
+// Lógica del Corazón Latiente
 const mainHeart = document.getElementById('mainHeart');
 const hiddenMessage = document.getElementById('hiddenMessage');
 
 if(mainHeart) {
     mainHeart.addEventListener('click', () => {
-        // Muestra el texto sobre el corazón
+        // Muestra el texto flotante sobre el corazón
         hiddenMessage.style.display = 'block';
         
-        // Lluvia de corazones
+        // Lluvia de corazones (💞)
         for(let i=0; i<15; i++) {
-            createHeart();
+            setTimeout(createHeart, i * 100); // Lluvia escalonada
         }
 
-        // Se oculta después de 3 segundos
+        // Se oculta el mensaje después de 3 segundos
         setTimeout(() => {
             hiddenMessage.style.display = 'none';
         }, 3000);
     });
 }
 
+// Función para crear los corazones que caen
 function createHeart() {
     const heart = document.createElement('div');
     heart.innerHTML = '💞';
@@ -42,7 +45,7 @@ function createHeart() {
     heart.style.top = '-20px';
     heart.style.fontSize = '25px';
     heart.style.zIndex = '1000';
-    heart.style.pointerEvents = 'none';
+    heart.style.pointerEvents = 'none'; // No interfiere con clics
     
     document.body.appendChild(heart);
 
@@ -50,9 +53,9 @@ function createHeart() {
     const interval = setInterval(() => {
         if (pos > window.innerHeight) {
             clearInterval(interval);
-            heart.remove();
+            heart.remove(); // Elimina el corazón al salir de pantalla
         }
-        pos += 3;
+        pos += 3; // Velocidad de caída
         heart.style.top = pos + 'px';
     }, 16);
 }
