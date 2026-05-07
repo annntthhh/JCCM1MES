@@ -2,7 +2,6 @@
     --pastel-pink: #fce4ec;
     --medium-pink: #f06292;
     --red-velvet: #a80019;
-    --dark-velvet: #7a0012;
     --white-glass: rgba(255, 255, 255, 0.6);
 }
 
@@ -15,13 +14,11 @@ body {
     overflow-x: hidden;
 }
 
-/* EFECTO DISCO CORAZONES */
+/* DISCO EFECTO */
 .disco-background {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    top: 0;
-    left: 0;
     z-index: 0;
     pointer-events: none;
 }
@@ -34,140 +31,96 @@ body {
 }
 
 @keyframes flash {
-    0% { opacity: 0.1; transform: scale(0.8) rotate(0deg); filter: blur(2px); }
-    100% { opacity: 0.6; transform: scale(1.2) rotate(15deg); filter: blur(0px); }
+    0% { opacity: 0.1; transform: scale(0.8); filter: blur(2px); }
+    100% { opacity: 0.5; transform: scale(1.1); filter: blur(0px); }
 }
 
-.disco-heart:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-.disco-heart:nth-child(2) { top: 20%; left: 70%; animation-delay: 0.3s; }
-.disco-heart:nth-child(3) { top: 60%; left: 15%; animation-delay: 0.6s; }
-.disco-heart:nth-child(4) { top: 75%; left: 80%; animation-delay: 0.9s; }
-.disco-heart:nth-child(5) { top: 40%; left: 45%; animation-delay: 1.2s; }
+.disco-heart:nth-child(1) { top: 10%; left: 10%; }
+.disco-heart:nth-child(2) { top: 20%; left: 75%; }
+.disco-heart:nth-child(3) { top: 65%; left: 15%; }
+.disco-heart:nth-child(4) { top: 80%; left: 80%; }
+.disco-heart:nth-child(5) { top: 40%; left: 45%; }
 
-/* LOGIN SCREEN (CENTRA EL CONTENIDO) */
+/* LOGIN */
 .login-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(135deg, #fce4ec, #f8bbd0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; justify-content: center; align-items: center;
     z-index: 9999;
 }
 
 #passwordInput {
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid var(--red-velvet);
-    text-align: center;
-    font-size: 1.5rem;
-    width: 120px;
-    margin: 20px auto;
-    display: block;
+    padding: 10px; border-radius: 10px; border: 2px solid var(--red-velvet);
+    text-align: center; font-size: 1.5rem; width: 120px;
+    margin: 20px auto; display: block;
 }
 
-/* --- AQUÍ ESTÁ EL ARREGLO --- */
 .glass-card button {
     display: block;
-    margin: 0 auto; /* Esto centra el botón horizontalmente */
+    margin: 0 auto;
 }
-/* --------------------------- */
 
-/* DISEÑO PRINCIPAL */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+/* CORAZÓN LATIENTE */
+.heart-container {
     position: relative;
-    z-index: 1;
+    display: inline-block;
+    margin-top: 20px;
 }
 
+.heart-icon {
+    font-size: 50px;
+    cursor: pointer;
+    animation: heartBeat 1.2s infinite;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.3); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+}
+
+/* TEXTO FLOTANTE SOBRE EL CORAZÓN */
+.floating-text {
+    display: none;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--red-velvet);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* DISEÑO CONTENIDO */
 .glass-card {
     background: var(--white-glass);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 40px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
 
-.title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
-    color: var(--red-velvet);
-}
-
-.heart-icon {
-    font-size: 40px;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-.content {
-    padding: 40px 20px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
+.title { font-family: 'Dancing Script'; font-size: 2.8rem; }
 
 .message-box {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    border-left: 5px solid var(--red-velvet);
-    line-height: 1.6;
+    background: white; padding: 25px; border-radius: 15px;
+    margin: 20px; border-left: 5px solid var(--red-velvet);
 }
 
 .photo-placeholder {
-    width: 100%;
-    max-width: 300px;
-    height: 300px;
-    background: var(--medium-pink);
-    margin: 0 auto 30px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border: 4px solid white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 280px; height: 280px; background: var(--medium-pink);
+    margin: 0 auto; border-radius: 15px; border: 4px solid white;
+    display: flex; align-items: center; justify-content: center; color: white;
 }
 
 button {
-    background-color: var(--red-velvet);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: 0.3s;
-}
-
-button:hover {
-    background-color: var(--dark-velvet);
-    transform: translateY(-3px);
-}
-
-.hidden {
-    display: none;
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-@media (max-width: 600px) {
-    .title { font-size: 2.2rem; }
+    background: var(--red-velvet); color: white; border: none;
+    padding: 12px 25px; border-radius: 20px; cursor: pointer;
 }
