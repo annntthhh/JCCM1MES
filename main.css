@@ -1,7 +1,7 @@
 :root {
     --pastel-pink: #fce4ec;
     --medium-pink: #f06292;
-    --red-velvet: #a80019; /* Rojo vinito */
+    --red-velvet: #a80019;
     --dark-velvet: #7a0012;
     --white-glass: rgba(255, 255, 255, 0.6);
 }
@@ -15,21 +15,71 @@ body {
     overflow-x: hidden;
 }
 
-/* Estrellas de fondo */
-.stars-container {
+/* EFECTO DISCO CORAZONES */
+.disco-background {
     position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
 }
 
+.disco-heart {
+    position: absolute;
+    font-size: 80px; /* Corazones grandes */
+    opacity: 0.3;
+    animation: flash 1.5s infinite alternate;
+}
+
+@keyframes flash {
+    0% { opacity: 0.1; transform: scale(0.8) rotate(0deg); filter: blur(2px); }
+    100% { opacity: 0.6; transform: scale(1.2) rotate(15deg); filter: blur(0px); }
+}
+
+/* Posiciones aleatorias para los corazones disco */
+.disco-heart:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.disco-heart:nth-child(2) { top: 20%; left: 70%; animation-delay: 0.3s; }
+.disco-heart:nth-child(3) { top: 60%; left: 15%; animation-delay: 0.6s; }
+.disco-heart:nth-child(4) { top: 75%; left: 80%; animation-delay: 0.9s; }
+.disco-heart:nth-child(5) { top: 40%; left: 45%; animation-delay: 1.2s; }
+.disco-heart:nth-child(6) { top: 5%; left: 40%; animation-delay: 0.5s; }
+
+/* LOGIN SCREEN */
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#passwordInput {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--red-velvet);
+    text-align: center;
+    font-size: 1.5rem;
+    width: 120px;
+    margin: 20px auto;
+    display: block;
+}
+
+/* DISEÑO PRINCIPAL */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .glass-card {
@@ -45,24 +95,14 @@ body {
 .title {
     font-family: 'Dancing Script', cursive;
     font-size: 3rem;
-    margin-bottom: 10px;
     color: var(--red-velvet);
-}
-
-.heart-icon {
-    font-size: 40px;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
 }
 
 .content {
     padding: 40px 20px;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .message-box {
@@ -71,6 +111,7 @@ body {
     border-radius: 15px;
     margin-bottom: 30px;
     border-left: 5px solid var(--red-velvet);
+    line-height: 1.6;
 }
 
 .photo-placeholder {
@@ -85,7 +126,6 @@ body {
     justify-content: center;
     color: white;
     border: 4px solid white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 button {
@@ -94,53 +134,12 @@ button {
     border: none;
     padding: 15px 30px;
     border-radius: 25px;
-    font-size: 1.1rem;
     cursor: pointer;
-    transition: 0.3s;
+    font-size: 1.1rem;
 }
 
-button:hover {
-    background-color: var(--dark-velvet);
-    transform: translateY(-3px);
-}
+.hidden { display: none; margin-top: 20px; font-weight: bold; }
 
-.hidden {
-    display: none;
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-/* Responsivo para celulares */
 @media (max-width: 600px) {
     .title { font-size: 2.2rem; }
-    .glass-card { padding: 30px 15px; }
-}
-
-/* Estilos para el bloqueo */
-.login-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    text-align: center;
-}
-
-#passwordInput {
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid var(--red-velvet);
-    text-align: center;
-    font-size: 1.2rem;
-    width: 100px;
-    margin-bottom: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
