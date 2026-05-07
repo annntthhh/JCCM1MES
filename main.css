@@ -28,7 +28,7 @@ body {
 
 .disco-heart {
     position: absolute;
-    font-size: 80px; /* Corazones grandes */
+    font-size: 80px;
     opacity: 0.3;
     animation: flash 1.5s infinite alternate;
 }
@@ -38,15 +38,13 @@ body {
     100% { opacity: 0.6; transform: scale(1.2) rotate(15deg); filter: blur(0px); }
 }
 
-/* Posiciones aleatorias para los corazones disco */
 .disco-heart:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
 .disco-heart:nth-child(2) { top: 20%; left: 70%; animation-delay: 0.3s; }
 .disco-heart:nth-child(3) { top: 60%; left: 15%; animation-delay: 0.6s; }
 .disco-heart:nth-child(4) { top: 75%; left: 80%; animation-delay: 0.9s; }
 .disco-heart:nth-child(5) { top: 40%; left: 45%; animation-delay: 1.2s; }
-.disco-heart:nth-child(6) { top: 5%; left: 40%; animation-delay: 0.5s; }
 
-/* LOGIN SCREEN */
+/* LOGIN SCREEN (CENTRA EL CONTENIDO) */
 .login-overlay {
     position: fixed;
     top: 0;
@@ -70,6 +68,13 @@ body {
     margin: 20px auto;
     display: block;
 }
+
+/* --- AQUÍ ESTÁ EL ARREGLO --- */
+.glass-card button {
+    display: block;
+    margin: 0 auto; /* Esto centra el botón horizontalmente */
+}
+/* --------------------------- */
 
 /* DISEÑO PRINCIPAL */
 .hero {
@@ -96,6 +101,17 @@ body {
     font-family: 'Dancing Script', cursive;
     font-size: 3rem;
     color: var(--red-velvet);
+}
+
+.heart-icon {
+    font-size: 40px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
 .content {
@@ -126,6 +142,7 @@ body {
     justify-content: center;
     color: white;
     border: 4px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 button {
@@ -136,9 +153,20 @@ button {
     border-radius: 25px;
     cursor: pointer;
     font-size: 1.1rem;
+    transition: 0.3s;
 }
 
-.hidden { display: none; margin-top: 20px; font-weight: bold; }
+button:hover {
+    background-color: var(--dark-velvet);
+    transform: translateY(-3px);
+}
+
+.hidden {
+    display: none;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
 
 @media (max-width: 600px) {
     .title { font-size: 2.2rem; }
